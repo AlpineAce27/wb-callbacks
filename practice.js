@@ -118,7 +118,7 @@ contains(names, 'Colt', (result) => {
 
 const each = (inputArray, cbFunction) => {
   inputArray.forEach((person, index) => {
-    return cbFunction(person, index)
+     cbFunction(person, index)
   })
 }
 
@@ -138,7 +138,7 @@ each(names, (item, index) => {
 */
 
 const getUserById = (userArray, id, cbFunction) => {
-  userArray.forEach((user, index) => {
+  userArray.forEach((user) => {
     if(id === user.id){
      cbFunction(user)
     }
@@ -205,6 +205,10 @@ const evens = (array) => {
     }
   })
 }
+
+const evens2 = (array) => {
+  return array.filter((numb) => numb % 2 === 0)
+}
   //return the new array of only even numbers
 
 
@@ -221,6 +225,7 @@ const evens = (array) => {
 const startWithLetterA = (array) => {
   return array.filter((element) => {
     //if the element starts with A or a return true
+    
     if(element[0] === "a" || element[0] === "A"){
       //console.log(element + " starts with a")
       return true
@@ -316,8 +321,10 @@ const orders = [
   Example: if tax is 0.07, the price afterTax could be calculated like this: afterTax = price * 1.07)
 */
 
-let orderTotals; // Code here
-
+let orderTotals = orders.map((order) => {
+    return (order.price * (1 + order.tax)).toFixed(2)
+    })
+  
 /// /////// PROBLEM 13 //////////
 
 // Do not edit code below.
@@ -332,7 +339,11 @@ const exampleMenuItems = [
 // Create a function called sortMenuItems which takes in an array of objects like the one above
 // and sorts the array by price from smallest to largest. It should return the sorted array.
 
-// REPLACE THIS WITH YOUR CODE
+const sortMenuItems = (menuItemsArray) => {
+  return menuItemsArray.sort((a, b) => {
+    return a.price - b.price
+  })
+}
 
 /// /////// PROBLEM 14 //////////
 
@@ -342,4 +353,6 @@ const exampleMenuItems = [
 //
 // Make sure to use arrow functions combined with the reduce method.
 
-// REPLACE THIS WITH YOUR CODE
+const productOfArray = (inputArray) => {
+  return inputArray.reduce((acc, num) => {return acc*num}
+)}
